@@ -2,16 +2,16 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Моя открытка</title>
+  <title>Открытка</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ffe6f0, #e6f0ff);
+      background: linear-gradient(135deg, #cceeff, #99ddff);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Arial", sans-serif;
+      font-family: Arial, sans-serif;
       overflow: hidden;
     }
 
@@ -21,19 +21,31 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      max-width: 350px;
+      max-width: 400px;
       width: 90%;
       position: relative;
     }
 
+    .card img {
+      width: 80px;
+      margin: 0 10px;
+    }
+
     h1 {
       margin-bottom: 20px;
-      color: #ff5fa2;
+      color: #0077cc;
     }
 
     p {
       font-size: 16px;
       margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
     }
 
     button {
@@ -43,19 +55,27 @@
       border-radius: 25px;
       cursor: pointer;
       transition: 0.3s;
-      background: #ff5fa2;
+    }
+
+    #yes {
+      background: #0077cc;
       color: white;
     }
 
-    button:hover {
+    #yes:hover {
       transform: scale(1.1);
+    }
+
+    #no {
+      background: #ddd;
+      position: relative;
     }
 
     .heart {
       position: absolute;
       width: 20px;
       height: 20px;
-      background: #ff5fa2;
+      background: #0077cc;
       transform: rotate(45deg);
       opacity: 0.8;
       pointer-events: none;
@@ -71,24 +91,39 @@
 <body>
 
   <div class="card">
-    <h1>Привет! 💖</h1>
-    <p>Я просто хотела напомнить тебе о наших тёплых моментах. 🌸</p>
-    <button id="heartBtn">Нажми меня 💌</button>
+    <h1>]Я просто хотела напомнить тебе что тебя любят и возможно то что погубио отношения их и спасет) 💙</h1>
+    <p>Пошли пройдемся сожжем калории или где-то наедим?)</p>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png" alt="Superman">
+      <img src="https://upload.wikimedia.org/wikipedia/en/8/87/StarWarslogo.png" alt="Star Wars">
+    </div>
+    <div class="buttons">
+      <button id="no">Нет</button>
+      <button id="yes">Да</button>
+    </div>
   </div>
 
   <script>
-    const heartBtn = document.getElementById("heartBtn");
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
 
-    heartBtn.addEventListener("click", () => {
-      // Создаём сердечко
+    // Кнопка "Нет" убегает
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 100 - 50;
+      noBtn.style.transform = translate(${x}px, ${y}px);
+    });
+
+    // Кнопка "Да" создает сердечки
+    yesBtn.addEventListener("click", () => {
       const heart = document.createElement("div");
       heart.classList.add("heart");
       heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.top = heartBtn.getBoundingClientRect().top + "px";
+      heart.style.top = yesBtn.getBoundingClientRect().top + "px";
       document.body.appendChild(heart);
-
-      // Удаляем сердечко через 3 секунды
       setTimeout(() => heart.remove(), 3000);
+      // Можно добавить сообщение
+      document.querySelector("h1").textContent = "Я знала 😘💖";
     });
   </script>
 
