@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Love Me?</title>
+  <title>Моя открытка</title>
   <style>
     body {
       margin: 0;
@@ -12,6 +12,7 @@
       justify-content: center;
       align-items: center;
       font-family: "Arial", sans-serif;
+      overflow: hidden;
     }
 
     .card {
@@ -20,25 +21,19 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      max-width: 320px;
+      max-width: 350px;
       width: 90%;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 15px;
-      margin-bottom: 20px;
+      position: relative;
     }
 
     h1 {
       margin-bottom: 20px;
+      color: #ff5fa2;
     }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      position: relative;
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
 
     button {
@@ -48,47 +43,52 @@
       border-radius: 25px;
       cursor: pointer;
       transition: 0.3s;
-    }
-
-    #yes {
       background: #ff5fa2;
       color: white;
     }
 
-    #yes:hover {
+    button:hover {
       transform: scale(1.1);
     }
 
-    #no {
-      background: #ddd;
-      position: relative;
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff5fa2;
+      transform: rotate(45deg);
+      opacity: 0.8;
+      pointer-events: none;
+      animation: floatUp 3s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
+      100% { transform: translateY(-300px) rotate(45deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG9vZnh6cGNjNGF0bWQ2b2l4NnE1eTdqM2N1ZHZxN2ZsZHRkZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif">
-    <h1>Ты меня любишь? 💕</h1>
-
-    <div class="buttons">
-      <button id="no">Нет</button>
-      <button id="yes">Да</button>
-    </div>
+    <h1>Привет! 💖</h1>
+    <p>Я просто хотела напомнить тебе о наших тёплых моментах. 🌸</p>
+    <button id="heartBtn">Нажми меня 💌</button>
   </div>
 
   <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
+    const heartBtn = document.getElementById("heartBtn");
 
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = translate(${x}px, ${y}px);
-    });
+    heartBtn.addEventListener("click", () => {
+      // Создаём сердечко
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = heartBtn.getBoundingClientRect().top + "px";
+      document.body.appendChild(heart);
 
-    yesBtn.addEventListener("click", () => {
-      document.body.innerHTML = "<h1 style='color:#ff5fa2'>Я знала 😘💖</h1>";
+      // Удаляем сердечко через 3 секунды
+      setTimeout(() => heart.remove(), 3000);
     });
   </script>
 
