@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Тут нет душного текста</title>
+
+  <!-- Google Tag Manager верхний скрипт -->
   <script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TKJB3NRP');</script>
-<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TKJB3NRP');
+  </script>
+
+  <!-- CSS -->
   <style>
     body {
       margin: 0;
@@ -22,11 +26,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       overflow: hidden;
     }
 
-    .container {
-      text-align: center;
-      position: relative;
-    }
-
     .card {
       background: white;
       padding: 30px;
@@ -36,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       max-width: 400px;
       width: 90%;
       position: relative;
-      height: 300px; /* фиксированная высота для движения кнопки */
+      height: 300px;
     }
 
     h1 {
@@ -64,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 25px;
       cursor: pointer;
       transition: 0.2s;
-      position: absolute; /* важно для движения кнопки "Нет" */
+      position: absolute;
     }
 
     #yes {
@@ -73,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: 0 4 px 15px rgba(255, 95,162,0.50;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     #yes:hover {
@@ -98,24 +97,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     @keyframes floatUp {
-from {
-opacity: 1;
-transform: translateY(0) rotate(45deg);
-}
-to {
-opacity: 0;
-transform: translateY(-150px) rotate(45deg);
-}
-}
+      from {
+        opacity: 1;
+        transform: translateY(0) rotate(45deg);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-150px) rotate(45deg);
+      }
+    }
   </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKJB3NRP"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKJB3NRP"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
 
   <div class="card">
-    <h1>Я просто хотела напомнить тебе, что тебя любят </h1>
-      и возможно то что погубио отношения их и спасет) 💙</h1>
+    <h1>Я просто хотела напомнить тебе, что тебя любят и возможно то, что погубило отношения, их спасет 💙</h1>
     <p>Пошли пройдемся, сожжем калории или где-то наедим?)</p>
     <div class="buttons">
       <button id="no">Нет</button>
@@ -123,44 +125,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  
-<script>
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
-const buttons = document.querySelector(".buttons");
+  <!-- JavaScript -->
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const buttons = document.querySelector(".buttons");
 
-// ❌ КНОПКА "НЕТ" УБЕГАЕТ ПРИ НАЖАТИИ
-noBtn.addEventListener("mouseenter", () => {
+    // Кнопка "Нет" убегает
+    noBtn.addEventListener("mouseenter", () => {
+      const area = buttons.getBoundingClientRect();
+      const btnW = noBtn.offsetWidth;
+      const btnH = noBtn.offsetHeight;
 
-const area = buttons.getBoundingClientRect();
-const btnW = noBtn.offsetWidth;
-const btnH = noBtn.offsetHeight;
+      const maxX = area.width - btnW;
+      const maxY = area.height - btnH;
 
-const maxX = area.width - btnW;
-const maxY = area.height - btnH;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
-const x = Math.random() * maxX;
-const y = Math.random() * maxY;
+      noBtn.style.left = ${x}px;
+      noBtn.style.top = ${y}px;
+    });
 
-noBtn.style.left = ${x}px;
-noBtn.style.top = ${y}px;
-});
+    // Кнопка "Да" с уведомлением и сердечками
+    yesBtn.addEventListener("click", () => {
+      alert("Я очень рада 💙");
 
-// ✅ КНОПКА "ДА" РАБОТАЕТ + УВЕДОМЛЕНИЕ
-yesBtn.addEventListener("click", () => {
-alert("Я очень рада 💙");
+      // Отправка события в Google Analytics через GTM
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: "click_yes_button"
+        });
+      }
 
-// сердечки (как в твоём рабочем примере)
-for (let i = 0; i < 8; i++) {
-const heart = document.createElement("div");
-heart.className = "heart";
-heart.style.left = yesBtn.offsetLeft + Math.random() * 50 + "px";
-heart.style.top = yesBtn.offsetTop - 10 + "px";
-buttons.appendChild(heart);
-setTimeout(() => heart.remove(), 2500);
-}
-});
-</script>
+      // Сердечки
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = yesBtn.offsetLeft + Math.random() * 50 + "px";
+        heart.style.top = yesBtn.offsetTop - 10 + "px";
+        buttons.appendChild(heart);
+        setTimeout(() => heart.remove(), 2500);
+      }
+    });
+  </script>
 
 </body>
 </html>
