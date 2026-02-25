@@ -41,7 +41,7 @@
     .buttons {
       position: relative;
       width: 100%;
-      height: 120px;
+      height: 80px;
     }
 
     button {
@@ -84,9 +84,15 @@
     }
 
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
-      100% { transform: translateY(-300px) rotate(45deg); opacity: 0; }
-    }
+from {
+opacity: 1;
+transform: translateY(0) rotate(45deg);
+}
+to {
+opacity: 0;
+transform: translateY(-150px) rotate(45deg);
+}
+}
   </style>
 </head>
 <body>
@@ -100,13 +106,16 @@
     </div>
   </div>
 
-  <script>
+  
+<script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const buttons = document.querySelector(".buttons");
 
-// 🏃 кнопка "Нет" УБЕГАЕТ
-noBtn.addEventListener("mouseenter", () => {
+// ❌ КНОПКА "НЕТ" УБЕГАЕТ ПРИ НАЖАТИИ
+noBtn.addEventListener("click", (e) => {
+e.preventDefault();
+
 const area = buttons.getBoundingClientRect();
 const btnW = noBtn.offsetWidth;
 const btnH = noBtn.offsetHeight;
@@ -121,18 +130,19 @@ noBtn.style.left = ${x}px;
 noBtn.style.top = ${y}px;
 });
 
-// 💙 кнопка "Да"
+// ✅ КНОПКА "ДА" РАБОТАЕТ + УВЕДОМЛЕНИЕ
 yesBtn.addEventListener("click", () => {
-for (let i = 0; i < 12; i++) {
+alert("Я очень рада 💙 Спасибо, что нажал «Да»");
+
+// сердечки (как в твоём рабочем примере)
+for (let i = 0; i < 8; i++) {
 const heart = document.createElement("div");
 heart.className = "heart";
-heart.style.left = yesBtn.offsetLeft + Math.random() * 60 + "px";
+heart.style.left = yesBtn.offsetLeft + Math.random() * 50 + "px";
 heart.style.top = yesBtn.offsetTop - 10 + "px";
 buttons.appendChild(heart);
 setTimeout(() => heart.remove(), 2500);
 }
-
-document.querySelector("h1").textContent = "Я знала 😘💖";
 });
 </script>
 
