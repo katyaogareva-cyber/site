@@ -64,12 +64,12 @@
       cursor: pointer;
       transition: 0.2s;
       position: absolute;
+      bottom: 0;
     }
 
     #yes {
       background: #0077cc;
       color: white;
-      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -81,7 +81,6 @@
 
     #no {
       background: #ddd;
-      bottom: 0;
       left: 20px;
     }
 
@@ -143,22 +142,18 @@
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
 
-      noBtn.style.left = ${x}px;
-      noBtn.style.top = ${y}px;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
     });
 
     // Кнопка "Да" с уведомлением и сердечками
     yesBtn.addEventListener("click", () => {
       alert("Я очень рада 💙");
 
-      // Отправка события в Google Analytics через GTM
       if (window.dataLayer) {
-        window.dataLayer.push({
-          event: "click_yes_button"
-        });
+        window.dataLayer.push({ event: "click_yes_button" });
       }
 
-      // Сердечки
       for (let i = 0; i < 8; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
