@@ -96,7 +96,7 @@
   </noscript>
 
   <div class="card">
-    <h1>Пошли пройдемся, сожжем калории?)</h1>
+    <h1>Пошли пройдемся?)</h1>
     <div class="buttons">
       <button id="no">Нет</button>
       <button id="yes">Да</button>
@@ -112,21 +112,20 @@
     // Кнопка "Нет" убегает
 
 
-//     noBtn.addEventListener("mouseenter", () => {
-//   noBtn.style.display = "none";
-// });
-    
     noBtn.addEventListener("mouseenter", () => {
-  const area = buttons.getBoundingClientRect();
+  noBtn.style.display = "none";
+    
+  //   noBtn.addEventListener("mouseenter", () => {
+  // const area = buttons.getBoundingClientRect();
 
-  const maxX = area.width - noBtn.offsetWidth;
-  const maxY = area.height - noBtn.offsetHeight;
+  // const maxX = area.width - noBtn.offsetWidth;
+  // const maxY = area.height - noBtn.offsetHeight;
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  // const randomX = Math.random() * maxX;
+  // const randomY = Math.random() * maxY;
 
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+  // noBtn.style.left = randomX + "px";
+  // noBtn.style.top = randomY + "px";
 });
 
     // Кнопка "Да" с уведомлением и сердечками
