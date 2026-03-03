@@ -83,48 +83,7 @@
       background: #ddd;
       left: 20px;
     }
-
-    .heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #0077cc;
-  transform: rotate(45deg);
-  opacity: 0.8;
-  pointer-events: none;
-  animation: floatUp 3s linear forwards;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #0077cc;
-  border-radius: 50%;
-}
-
-.heart::before {
-  top: -10px;
-  left: 0;
-}
-
-.heart::after {
-  top: 0;
-  left: -10px;
-}
-
-    @keyframes floatUp {
-      from {
-        opacity: 1;
-        transform: translateY(0) rotate(45deg);
-      }
-      to {
-        opacity: 0;
-        transform: translateY(-150px) rotate(45deg);
-      }
-    }
+    
   </style>
 </head>
 <body>
