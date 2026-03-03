@@ -57,32 +57,33 @@
     }
 
     button {
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: 0.2s;
-      position: absolute;
-      bottom: 0;
-    }
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: absolute;
+}
 
-    #yes {
-      background: #0077cc;
-      color: white;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
+#yes {
+  background: #0077cc;
+  color: white;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
 
-    #yes:hover {
-      transform: translateX(-50%) scale(1.1);
-    }
+#yes:hover {
+  transform: translateX(-50%) scale(1.1);
+}
 
-    #no {
-      background: #ddd;
-      left: 20px;
-    }
+#no {
+  background: #ddd;
+  left: 20px;
+  bottom: 0;
+}
     
   </style>
 </head>
@@ -110,19 +111,17 @@
 
     // Кнопка "Нет" убегает
     noBtn.addEventListener("mouseenter", () => {
-      const area = buttons.getBoundingClientRect();
-      const btnW = noBtn.offsetWidth;
-      const btnH = noBtn.offsetHeight;
+  const area = buttons.getBoundingClientRect();
 
-      const maxX = area.width - btnW;
-      const maxY = area.height - btnH;
+  const maxX = area.width - noBtn.offsetWidth;
+  const maxY = area.height - noBtn.offsetHeight;
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
+  noBtn.style.left = randomX + "px";
+  noBtn.style.top = randomY + "px";
+});
 
     // Кнопка "Да" с уведомлением и сердечками
     yesBtn.addEventListener("click", () => {
