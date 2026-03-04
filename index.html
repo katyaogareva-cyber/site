@@ -107,42 +107,16 @@
     // Кнопка "Нет" убегает
 
 
-  //   noBtn.addEventListener("mouseenter", () => {
-
-  // if (typeof gtag === 'function') {
-  //   gtag('event', 'no_attempt', {
-  //     button_name: 'no',
-  //     action_type: 'hover_attempt'
-  //   });
-  // }
-
-  // noBtn.style.display = "none";
-// });
-
     noBtn.addEventListener("mouseenter", () => {
 
-  // Отправляем событие в аналитику
   if (typeof gtag === 'function') {
     gtag('event', 'no_attempt', {
       button_name: 'no',
-      action_type: 'hover_escape'
+      action_type: 'hover_attempt'
     });
   }
 
-  // Получаем границы контейнера
-  const area = buttons.getBoundingClientRect();
-
-  // Максимальные координаты внутри блока
-  const maxX = area.width - noBtn.offsetWidth;
-  const maxY = area.height - noBtn.offsetHeight;
-
-  // Генерируем случайную позицию
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
-
-  // Перемещаем кнопку
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+  noBtn.style.display = "none";
 });
 
     // Кнопка "Да" с уведомлением и сердечками
