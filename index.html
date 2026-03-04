@@ -108,38 +108,37 @@
 
 
     noBtn.addEventListener("mouseenter", () => {
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'no_attempt', {
+      button_name: 'no',
+      action_type: 'hover_attempt'
+    });
+  }
+
   noBtn.style.display = "none";
-    
-  //   noBtn.addEventListener("mouseenter", () => {
-  // const area = buttons.getBoundingClientRect();
-
-  // const maxX = area.width - noBtn.offsetWidth;
-  // const maxY = area.height - noBtn.offsetHeight;
-
-  // const randomX = Math.random() * maxX;
-  // const randomY = Math.random() * maxY;
-
-  // noBtn.style.left = randomX + "px";
-  // noBtn.style.top = randomY + "px";
 });
 
     // Кнопка "Да" с уведомлением и сердечками
-    yesBtn.addEventListener("click", () => {
-      alert("Я очень рада 💙");
+      yesBtn.addEventListener("click", () => {
+  alert("Я очень рада 💙");
 
-      if (typeof gtag === 'function') {
-  gtag('event', 'click_yes_button');
-}
-
-      for (let i = 0; i < 8; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.style.left = yesBtn.offsetLeft + Math.random() * 50 + "px";
-        heart.style.top = yesBtn.offsetTop - 10 + "px";
-        buttons.appendChild(heart);
-        setTimeout(() => heart.remove(), 2500);
-      }
+  if (typeof gtag === 'function') {
+    gtag('event', 'yes_click', {
+      button_name: 'yes',
+      page_title: document.title
     });
+  }
+
+  for (let i = 0; i < 8; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = yesBtn.offsetLeft + Math.random() * 50 + "px";
+    heart.style.top = yesBtn.offsetTop - 10 + "px";
+    buttons.appendChild(heart);
+    setTimeout(() => heart.remove(), 2500);
+  }
+});
   </script>
 
 </body>
