@@ -127,9 +127,9 @@
     yesBtn.addEventListener("click", () => {
       alert("Я очень рада 💙");
 
-      if (window.dataLayer) {
-        window.dataLayer.push({ event: "click_yes_button" });
-      }
+      if (typeof gtag === 'function') {
+  gtag('event', 'click_yes_button');
+}
 
       for (let i = 0; i < 8; i++) {
         const heart = document.createElement("div");
