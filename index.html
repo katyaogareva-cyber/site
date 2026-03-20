@@ -156,9 +156,11 @@ button:hover {
 
 <body>
 
+<!-- Фон -->
 <div class="bg" id="bg"></div>
 <div class="hero-bg"></div>
 
+<!-- Карточка с текстом -->
 <div class="card">
   <img class="logo" src="https://pngimg.com/uploads/superman/superman_PNG8.png" alt="superman">
 
@@ -173,18 +175,18 @@ button:hover {
 </div>
 
 <script>
-// Массив картинок для фона
+// Массив картинок для фона (все лежат в папке images рядом с HTML)
 const images = [
-  "/images/1.jpg","/images/2.jpg","/images/3.jpg","/images/4.jpg","/images/5.jpg",
-  "/images/6.jpg","/images/7.jpg","/images/8.jpg","/images/9.jpg","/images/10.jpg",
-  "/images/11.jpg","/images/12.jpg","/images/13.jpg"
+  "images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg",
+  "images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg",
+  "images/11.jpg","images/12.jpg","images/13.jpg"
 ];
 
 let i = 0;
 const bg = document.getElementById("bg");
 
 function changeBg() {
-  bg.style.backgroundImage = `url(${images[i]})`;
+  bg.style.backgroundImage = `url('${images[i]}')`;
   i = (i + 1) % images.length;
 }
 
