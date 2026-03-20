@@ -1,145 +1,175 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Ссылка</title>
+<meta charset="UTF-8">
+<title>Прогулка</title>
 
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1GP5G7EVLM"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1GP5G7EVLM');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1GP5G7EVLM');
 </script>
 
-  <!-- CSS -->
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #cceeff, #99ddff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      max-width: 400px;
-      width: 90%;
-      position: relative;
-      height: 300px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      color: #0077cc;
-      font-size: 18px;
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-
-    .buttons {
-      position: relative;
-      width: 100%;
-      height: 80px;
-      margin: 0 auto;
-    }
-
-    button {
-  padding: 12px 24px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  position: absolute;
+  /* Анимированный фон */
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #43e97b);
+  background-size: 600% 600%;
+  animation: gradientMove 10s ease infinite;
 }
 
-#yes {
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Фоновый "супергеройский" знак */
+.hero-bg {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  opacity: 0.08;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/3/35/Superman_S_symbol.svg') no-repeat center/contain;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  color: #0077cc;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+/* Кнопка */
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
   background: #0077cc;
   color: white;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-#yes:hover {
-  transform: translateX(-50%) scale(1.1);
+button:hover {
+  transform: scale(1.1);
+  background: #005fa3;
 }
 
-#no {
-  background: #ddd;
-  left: 20px;
-  bottom: 0;
+/* Сердечки */
+.heart {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: red;
+  transform: rotate(45deg);
+  animation: floatUp 2.5s linear forwards;
 }
-    
-  </style>
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: -7px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) rotate(45deg);
+  }
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <h1>Пошли пройдемся?)</h1>
-    <div class="buttons">
-      <button id="no">Нет</button>
-      <button id="yes">Да</button>
-    </div>
-  </div>
+<div class="hero-bg"></div>
 
-  <!-- JavaScript -->
-  <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const buttons = document.querySelector(".buttons");
+<div class="card">
+  <h1>Есть одна идея 😉</h1>
+  <p>Готов(-а) к маленькому приключению?</p>
+  <button id="go">Поехали 🚀</button>
+</div>
 
-    // Кнопка "Нет" убегает
+<script>
+const btn = document.getElementById("go");
+const card = document.querySelector(".card");
 
-
-    noBtn.addEventListener("mouseenter", () => {
+btn.addEventListener("click", () => {
+  alert("Тогда собирайся 😎");
 
   if (typeof gtag === 'function') {
-    gtag('event', 'no_attempt', {
-      button_name: 'no',
-      action_type: 'hover_attempt'
+    gtag('event', 'go_click', {
+      button_name: 'go'
     });
   }
 
-  noBtn.style.display = "none";
-});
-
-    // Кнопка "Да" с уведомлением и сердечками
-      yesBtn.addEventListener("click", () => {
-  alert("Ура💙");
-
-  if (typeof gtag === 'function') {
-    gtag('event', 'yes_click', {
-      button_name: 'yes',
-      page_title: document.title
-    });
-  }
-
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 12; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.style.left = yesBtn.offsetLeft + Math.random() * 50 + "px";
-    heart.style.top = yesBtn.offsetTop - 10 + "px";
-    buttons.appendChild(heart);
+
+    heart.style.left = Math.random() * 200 + "px";
+    heart.style.top = "200px";
+
+    card.appendChild(heart);
     setTimeout(() => heart.remove(), 2500);
   }
 });
-  </script>
+</script>
 
 </body>
 </html>
