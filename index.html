@@ -35,7 +35,7 @@ body {
   100% {background-position: 0% 50%;}
 }
 
-/* Фоновый "супергеройский" знак */
+/* Большой фон логотипа */
 .hero-bg {
   position: absolute;
   width: 400px;
@@ -50,6 +50,7 @@ body {
   50% { transform: translateY(-20px); }
 }
 
+/* Карточка */
 .card {
   background: white;
   padding: 40px;
@@ -60,6 +61,19 @@ body {
   width: 90%;
   position: relative;
   z-index: 2;
+}
+
+/* Логотип внутри */
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+  animation: logoFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255,0,0,0.6));
+}
+
+@keyframes logoFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 h1 {
@@ -131,7 +145,6 @@ button:hover {
     transform: translateY(-120px) rotate(45deg);
   }
 }
-
 </style>
 </head>
 
@@ -140,8 +153,11 @@ button:hover {
 <div class="hero-bg"></div>
 
 <div class="card">
+  <img class="logo" src="https://pngimg.com/uploads/superman/superman_PNG8.png" alt="superman">
+
   <h1>Есть одна идея 😉</h1>
   <p>Готов(-а) к маленькому приключению?</p>
+
   <button id="go">Поехали 🚀</button>
 </div>
 
@@ -162,8 +178,8 @@ btn.addEventListener("click", () => {
     const heart = document.createElement("div");
     heart.className = "heart";
 
-    heart.style.left = Math.random() * 200 + "px";
-    heart.style.top = "200px";
+    heart.style.left = Math.random() * 250 + "px";
+    heart.style.top = "220px";
 
     card.appendChild(heart);
     setTimeout(() => heart.remove(), 2500);
