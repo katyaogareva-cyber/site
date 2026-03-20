@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Прости за много текст)</title>
+<title>Прости за много текста)</title>
 
 <!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1GP5G7EVLM"></script>
@@ -22,17 +22,19 @@ body {
   align-items: center;
   font-family: Arial, sans-serif;
   overflow: hidden;
-
-  /* Анимированный фон */
-  background: linear-gradient(270deg, #4facfe, #00f2fe, #43e97b);
-  background-size: 600% 600%;
-  animation: gradientMove 10s ease infinite;
+  position: relative;
 }
 
-@keyframes gradientMove {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+/* Плавно меняющийся фон */
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1.5s ease-in-out;
+  z-index: 0;
+  filter: brightness(0.7) blur(1px);
 }
 
 /* Большой фон логотипа */
@@ -43,6 +45,7 @@ body {
   opacity: 0.08;
   background: url('https://upload.wikimedia.org/wikipedia/commons/3/35/Superman_S_symbol.svg') no-repeat center/contain;
   animation: float 6s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes float {
@@ -52,18 +55,20 @@ body {
 
 /* Карточка */
 .card {
-  background: white;
+  background: rgba(255,255,255,0.95);
   padding: 40px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  max-width: 420px;
+  max-width: 600px;
   width: 90%;
   position: relative;
   z-index: 2;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
-/* Логотип внутри */
+/* Логотип внутри карточки */
 .logo {
   width: 120px;
   margin-bottom: 20px;
@@ -84,7 +89,8 @@ h1 {
 
 p {
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  text-align: justify;
 }
 
 /* Кнопка */
@@ -150,6 +156,7 @@ button:hover {
 
 <body>
 
+<div class="bg" id="bg"></div>
 <div class="hero-bg"></div>
 
 <div class="card">
@@ -157,18 +164,35 @@ button:hover {
 
   <h1>Спасибо что зашел) значит правда не все потеряно 😉</h1>
   <p>Пошли гулять) расскажу как подушку хотя бы стикать) я не смогу исправить свою вину, но могу показать на сколько ты мне дорог и что ты правда единственный человек с которым я бы хотела, что-то строить</p>
-  <p>Знаю что ты тоже любил и тоже хотел и поэтому предлагаю давай реально сделаем нормальный раз, будем обсуждать много и можем к психологу и тд пойти, кружки как мы выяснили не помогают особо) я правда тебя очень сильно люблю
-  хоть ты и думал все это время что вру и из-за этого все разваливалось и разваливалось</p>
+  <p>Знаю что ты тоже любил и тоже хотел и поэтому предлагаю давай реально сделаем нормальный раз, будем обсуждать много и можем к психологу и тд пойти, кружки как мы выяснили не помогают особо) я правда тебя очень сильно люблю хоть ты и думал все это время что вру и из-за этого все разваливалось и разваливалось</p>
   <p>Не предлагаю все собирать, а просто начать "заново" историю) я за это время повзрослела,поумнела)</p>
-  <p>Знаю что ты все что говоришь плохое, говоришь чтобы побольше задеть и не думаешь так на самом деле( знаю что сделала тебе очень больно, но пожалуйста, попробуй подумать что вот так
-  как было в начале(я не про вранье) может быть всегда и мы можем вместе путешествовать и строить жизнь</p>
-  <p>я тебя никогда в жизни не предам) ты можешь быть уверен на сто процентов, ты правда единственный человек, который мне нужен( и знаб что ты такого тоже не найдешь больше(
-  НЕ в плохом ключе это)</p>
+  <p>Знаю что ты все что говоришь плохое, говоришь чтобы побольше задеть и не думаешь так на самом деле( знаю что сделала тебе очень больно, но пожалуйста, попробуй подумать что вот так как было в начале(я не про вранье) может быть всегда и мы можем вместе путешествовать и строить жизнь</p>
+  <p>я тебя никогда в жизни не предам) ты можешь быть уверен на сто процентов, ты правда единственный человек, который мне нужен( и знаб что ты такого тоже не найдешь больше( НЕ в плохом ключе это)</p>
 
   <button id="go">Начать 🚀</button>
 </div>
 
 <script>
+// Массив картинок для фона
+const images = [
+  "IMAGE 2026-03-20 12:23:13.jpg","IMAGE 2026-03-20 12:23:47.jpg","IMAGE 2026-03-20 12:23:33.jpg","IMAGE 2026-03-20 12:23:55.jpg","IMAGE 2026-03-20 12:23:51.jpg",
+  "IMAGE 2026-03-20 12:24:07.jpg","IMAGE 2026-03-20 12:23:59.jpg","IMAGE 2026-03-20 12:24:03.jpg","IMAGE 2026-03-20 12:23:36.jpg","IMAGE 2026-03-20 12:23:47.jpg",
+  "images/11.jpg","IMAGE 2026-03-20 12:24:11.jpg","IMAGE 2026-03-20 12:23:29.jpg"
+];
+
+let i = 0;
+const bg = document.getElementById("bg");
+
+function changeBg() {
+  bg.style.backgroundImage = `url(${images[i]})`;
+  i = (i + 1) % images.length;
+}
+
+// Смена каждые 2.5 секунды
+changeBg();
+setInterval(changeBg, 2500);
+
+// Кнопка с эффектом сердечек
 const btn = document.getElementById("go");
 const card = document.querySelector(".card");
 
@@ -176,18 +200,14 @@ btn.addEventListener("click", () => {
   alert("Тогда собирайся 😎");
 
   if (typeof gtag === 'function') {
-    gtag('event', 'go_click', {
-      button_name: 'go'
-    });
+    gtag('event', 'go_click', { button_name: 'go' });
   }
 
   for (let i = 0; i < 12; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
-
     heart.style.left = Math.random() * 250 + "px";
     heart.style.top = "220px";
-
     card.appendChild(heart);
     setTimeout(() => heart.remove(), 2500);
   }
