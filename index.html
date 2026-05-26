@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Открытка</title>
+<title>Открытка Илье</title>
 
 <!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1GP5G7EVLM"></script>
@@ -25,32 +25,25 @@ body {
   position: relative;
 }
 
-/* Фон */
+/* Фон-сетка из 13 картинок */
 .bg-grid {
   position: fixed;
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 25%;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  grid-auto-rows: 25%; /* подбираем под 13 картинок */
   z-index: 0;
   filter: brightness(0.7) blur(1px);
-  animation: bgMove 20s linear infinite;
 }
 
 .bg-grid img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* сохраняет пропорции */
 }
 
-@keyframes bgMove {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Логотип фон */
+/* Большой фон логотипа */
 .hero-bg {
   position: absolute;
   width: 400px;
@@ -77,25 +70,16 @@ body {
   width: 90%;
   position: relative;
   z-index: 2;
-  animation: fadeIn 1.5s ease;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Лого */
+/* Логотип внутри карточки */
 .logo {
   width: 120px;
   margin-bottom: 20px;
   animation: logoFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255,0,0,0.6));
 }
 
 @keyframes logoFloat {
@@ -103,16 +87,20 @@ body {
   50% { transform: translateY(-10px); }
 }
 
-/* Текст */
-#typing {
-  font-size: 18px;
-  line-height: 1.6;
-  white-space: pre-line;
+h1 {
+  color: #0077cc;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: justify;
 }
 
 /* Кнопка */
 button {
-  margin-top: 25px;
   padding: 14px 28px;
   font-size: 18px;
   border: none;
@@ -121,10 +109,12 @@ button {
   background: #0077cc;
   color: white;
   transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 button:hover {
   transform: scale(1.1);
+  background: #005fa3;
 }
 
 /* Сердечки */
@@ -134,7 +124,7 @@ button:hover {
   height: 15px;
   background: red;
   transform: rotate(45deg);
-  animation: floatUp 3s ease-out forwards;
+  animation: floatUp 2.5s linear forwards;
 }
 
 .heart::before,
@@ -147,17 +137,24 @@ button:hover {
   border-radius: 50%;
 }
 
-.heart::before { top: -7px; left: 0; }
-.heart::after { left: -7px; top: 0; }
+.heart::before {
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  left: -7px;
+  top: 0;
+}
 
 @keyframes floatUp {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1) rotate(45deg);
+    transform: translateY(0) rotate(45deg);
   }
   100% {
     opacity: 0;
-    transform: translateY(-200px) scale(1.5) rotate(45deg);
+    transform: translateY(-120px) rotate(45deg);
   }
 }
 </style>
@@ -165,6 +162,7 @@ button:hover {
 
 <body>
 
+<!-- Фон-сетка -->
 <div class="bg-grid">
   <img src="images/1.jpg">
   <img src="images/2.jpg">
@@ -186,60 +184,42 @@ button:hover {
 
 <div class="hero-bg"></div>
 
+<!-- Карточка с текстом -->
 <div class="card">
-  <img class="logo" src="https://pngimg.com/uploads/superman/superman_PNG8.png">
+  <img class="logo" src="https://pngimg.com/uploads/superman/superman_PNG8.png" alt="superman">
 
-  <p id="typing"></p>
+  <!-- <h1>Прости за много текста)</h1> -->
+  <p>расскажу как подушку хотя бы стирать) я не смогу исправить свою вину, но могу показать на сколько ты мне дорог и что ты правда единственный человек с которым я бы хотела, что-то строить</p>
+  <p>Знаю что ты тоже любил и тоже хотел, не знаю как выходить из такого, но мы сможем 💪 я правда тебя очень сильно люблю хоть ты и думал все это время что вру и из-за этого все разваливалось и разваливалось</p>
+  <p>Не предлагаю все собирать, а просто начать "заново" историю) я за это время повзрослела,поумнела)</p>
+  <p>Знаю что ты все что говоришь плохое, говоришь чтобы побольше задеть и не думаешь так на самом деле( знаю что сделала тебе очень больно, но пожалуйста, попробуй подумать что вот так как было в начале(я не про вранье) может быть всегда и мы можем вместе путешествовать и строить жизнь</p>
+  <p>я тебя никогда в жизни не предам) ты можешь быть уверен на сто процентов, ты правда единственный человек, который мне нужен( и знаб что ты такого тоже не найдешь больше( НЕ в плохом ключе это)</p>
 
-  <button id="go">Текст заголовок 💫</button>
+<!-- <button id="go">Начать 🚀</button> --> 
 </div>
 
 <script>
-// печатающийся текст
-const text = `Печатается какой-то текст💙`;
-
-function typeText(element, text, speed = 35) {
-  let i = 0;
-  function typing() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, speed);
-    }
-  }
-  typing();
-}
-
-typeText(document.getElementById("typing"), text);
-
-// кнопка
+// Кнопка с эффектом сердечек
 const btn = document.getElementById("go");
+const card = document.querySelector(".card");
 
 btn.addEventListener("click", () => {
+  alert("Тогда собирайся 😎");
 
-  // аналитика
   if (typeof gtag === 'function') {
-    gtag('event', 'go_click', {
-      button_name: 'restart_love'
-    });
+    gtag('event', 'go_click', { button_name: 'go' });
   }
 
-  document.querySelector(".card").innerHTML = `
-    <h1>Текст 💙</h1>
-    <p>текст</p>
-  `;
-
-  // сердечки
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 12; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = window.innerHeight + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 3000);
+    heart.style.left = Math.random() * 250 + "px";
+    heart.style.top = "220px";
+    card.appendChild(heart);
+    setTimeout(() => heart.remove(), 2500);
   }
 });
 </script>
 
 </body>
-</html>
+</html> что оригинальное написать мне вместо текста? чтобы удивить человека или как-то украсить сайт чем-то классным
